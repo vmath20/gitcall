@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fbfbf5;
   --foreground: #171717;
+  --primary: #ff3131;
+  --primary-dark: #000000;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,4 +27,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.animate-gradient {
+  animation: gradient-move 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes gradient-move {
+  0% { filter: blur(8px) opacity(0.2); }
+  40% { filter: blur(2px) opacity(0.7); }
+  100% { filter: blur(0) opacity(1); }
+}
+
+.animate-pulse-gradient {
+  animation: pulse-gradient-border 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes pulse-gradient-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(177,108,234,0.4), 0 1px 2px 0 rgba(16,30,54,0.04);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255,94,105,0.18), 0 1px 2px 0 rgba(16,30,54,0.04);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(177,108,234,0.4), 0 1px 2px 0 rgba(16,30,54,0.04);
+  }
 }

@@ -24,9 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <head>
+        <link rel="icon" href="/logo/icon1.svg?v=2" type="image/svg+xml" sizes="256x256" />
+        <link rel="icon" href="/logo/icon1.png?v=2" type="image/png" sizes="256x256" />
+        <link rel="icon" href="/logo/icon1.png?v=2" type="image/png" sizes="128x128" />
+        <link rel="icon" href="/logo/icon1.png?v=2" type="image/png" sizes="64x64" />
+        <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
