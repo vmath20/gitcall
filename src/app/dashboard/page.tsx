@@ -15,7 +15,11 @@ interface Repository {
   owner: string;
 }
 
-// Dashboard Components
+/**
+ * Renders the main dashboard view with interactive charts, activity heatmap, and key metrics.
+ *
+ * Displays a greeting, a weekly highlight card, a detailed line graph of addressed comments per PR, a GitCall activity heatmap for the past year, and summary cards for feedback, credits, and repository metrics. The activity heatmap is interactive, allowing users to view daily call counts by clicking on individual days.
+ */
 function DashboardView() {
   const [selectedDay, setSelectedDay] = useState<any>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
