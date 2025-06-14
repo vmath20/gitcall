@@ -115,27 +115,27 @@ function DashboardView() {
           </div>
         </div>
 
-        {/* Comments Chart - Improved */}
+        {/* Comments Chart - Proper Line Graph with Yearly Growth */}
         <div className="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-neutral-200">
           <div className="flex items-center justify-between mb-6">
             <h3 className="font-semibold text-neutral-800 text-lg">Addressed Comments Per PR</h3>
             <div className="flex items-center gap-2 text-neutral-500">
-              <span className="text-sm bg-neutral-100 px-2 py-1 rounded">Q4</span>
+              <span className="text-sm bg-neutral-100 px-2 py-1 rounded">2024</span>
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                 <path d="M19 9l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
-          <div className="h-56 relative mb-6">
-            {/* Enhanced Chart Area */}
-            <svg className="w-full h-full" viewBox="0 0 400 220">
+          <div className="h-64 relative mb-4">
+            {/* Proper Line Graph with Axes */}
+            <svg className="w-full h-full" viewBox="0 0 500 280">
               <defs>
                 <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.4"/>
+                  <stop offset="0%" stopColor="#10b981" stopOpacity="0.3"/>
                   <stop offset="100%" stopColor="#10b981" stopOpacity="0.05"/>
                 </linearGradient>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                   <feMerge> 
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -143,27 +143,68 @@ function DashboardView() {
                 </filter>
               </defs>
               
-              {/* Grid lines */}
-              <defs>
-                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
+              {/* Chart area background */}
+              <rect x="60" y="20" width="420" height="200" fill="#fafafa" stroke="#e5e7eb" strokeWidth="1"/>
               
-              {/* Data points */}
-              <circle cx="60" cy="160" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="100" cy="140" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="140" cy="120" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="180" cy="100" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="220" cy="80" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="260" cy="60" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="300" cy="40" r="4" fill="#10b981" className="opacity-80"/>
-              <circle cx="340" cy="30" r="4" fill="#10b981" className="opacity-80"/>
+              {/* Grid lines - Horizontal */}
+              <g stroke="#f3f4f6" strokeWidth="1">
+                <line x1="60" y1="220" x2="480" y2="220"/>
+                <line x1="60" y1="180" x2="480" y2="180"/>
+                <line x1="60" y1="140" x2="480" y2="140"/>
+                <line x1="60" y1="100" x2="480" y2="100"/>
+                <line x1="60" y1="60" x2="480" y2="60"/>
+                <line x1="60" y1="20" x2="480" y2="20"/>
+              </g>
               
-              {/* Main line */}
+              {/* Grid lines - Vertical */}
+              <g stroke="#f3f4f6" strokeWidth="1">
+                <line x1="95" y1="20" x2="95" y2="220"/>
+                <line x1="130" y1="20" x2="130" y2="220"/>
+                <line x1="165" y1="20" x2="165" y2="220"/>
+                <line x1="200" y1="20" x2="200" y2="220"/>
+                <line x1="235" y1="20" x2="235" y2="220"/>
+                <line x1="270" y1="20" x2="270" y2="220"/>
+                <line x1="305" y1="20" x2="305" y2="220"/>
+                <line x1="340" y1="20" x2="340" y2="220"/>
+                <line x1="375" y1="20" x2="375" y2="220"/>
+                <line x1="410" y1="20" x2="410" y2="220"/>
+                <line x1="445" y1="20" x2="445" y2="220"/>
+                <line x1="480" y1="20" x2="480" y2="220"/>
+              </g>
+              
+              {/* Y-axis labels */}
+              <g fill="#6b7280" fontSize="11" textAnchor="end">
+                <text x="55" y="225">0</text>
+                <text x="55" y="185">2</text>
+                <text x="55" y="145">4</text>
+                <text x="55" y="105">6</text>
+                <text x="55" y="65">8</text>
+                <text x="55" y="25">10</text>
+              </g>
+              
+              {/* X-axis labels */}
+              <g fill="#6b7280" fontSize="11" textAnchor="middle">
+                <text x="95" y="240">Jan</text>
+                <text x="130" y="240">Feb</text>
+                <text x="165" y="240">Mar</text>
+                <text x="200" y="240">Apr</text>
+                <text x="235" y="240">May</text>
+                <text x="270" y="240">Jun</text>
+                <text x="305" y="240">Jul</text>
+                <text x="340" y="240">Aug</text>
+                <text x="375" y="240">Sep</text>
+                <text x="410" y="240">Oct</text>
+                <text x="445" y="240">Nov</text>
+                <text x="480" y="240">Dec</text>
+              </g>
+              
+              {/* Axis labels */}
+              <text x="270" y="265" fill="#6b7280" fontSize="12" textAnchor="middle" fontWeight="500">Month (2024)</text>
+              <text x="25" y="120" fill="#6b7280" fontSize="12" textAnchor="middle" fontWeight="500" transform="rotate(-90 25 120)">Comments per PR</text>
+              
+              {/* Data line with yearly growth trend */}
               <path
-                d="M 60 160 L 100 140 L 140 120 L 180 100 L 220 80 L 260 60 L 300 40 L 340 30"
+                d="M 95 200 L 130 190 L 165 175 L 200 160 L 235 145 L 270 125 L 305 110 L 340 95 L 375 80 L 410 65 L 445 50 L 480 40"
                 stroke="#10b981"
                 strokeWidth="3"
                 fill="none"
@@ -172,33 +213,128 @@ function DashboardView() {
               
               {/* Area fill */}
               <path
-                d="M 60 160 L 100 140 L 140 120 L 180 100 L 220 80 L 260 60 L 300 40 L 340 30 L 340 200 L 60 200 Z"
+                d="M 95 200 L 130 190 L 165 175 L 200 160 L 235 145 L 270 125 L 305 110 L 340 95 L 375 80 L 410 65 L 445 50 L 480 40 L 480 220 L 95 220 Z"
                 fill="url(#chartGradient)"
               />
+              
+              {/* Data points */}
+              <g fill="#10b981" stroke="#ffffff" strokeWidth="2">
+                <circle cx="95" cy="200" r="4"/>
+                <circle cx="130" cy="190" r="4"/>
+                <circle cx="165" cy="175" r="4"/>
+                <circle cx="200" cy="160" r="4"/>
+                <circle cx="235" cy="145" r="4"/>
+                <circle cx="270" cy="125" r="4"/>
+                <circle cx="305" cy="110" r="4"/>
+                <circle cx="340" cy="95" r="4"/>
+                <circle cx="375" cy="80" r="4"/>
+                <circle cx="410" cy="65" r="4"/>
+                <circle cx="445" cy="50" r="4"/>
+                <circle cx="480" cy="40" r="4"/>
+              </g>
+              
+              {/* Trend indicator */}
+              <g fill="#10b981" fontSize="10">
+                <text x="400" y="35" textAnchor="start">↗ +85% growth</text>
+              </g>
             </svg>
           </div>
           <div className="grid grid-cols-4 gap-6">
             <div className="text-center">
-              <p className="text-3xl font-bold text-black mb-1">8.4</p>
-              <p className="text-xs text-neutral-500 uppercase tracking-wide">Average</p>
+              <p className="text-3xl font-bold text-black mb-1">6.2</p>
+              <p className="text-xs text-neutral-500 uppercase tracking-wide">Current Average</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-black mb-1">12.3</p>
-              <p className="text-xs text-neutral-500 uppercase tracking-wide">95th Percentile</p>
+              <p className="text-3xl font-bold text-black mb-1">8.5</p>
+              <p className="text-xs text-neutral-500 uppercase tracking-wide">Peak (Dec)</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-black mb-1">2.6</p>
-              <p className="text-xs text-neutral-500 uppercase tracking-wide">5th Percentile</p>
+              <p className="text-3xl font-bold text-black mb-1">1.2</p>
+              <p className="text-xs text-neutral-500 uppercase tracking-wide">Starting (Jan)</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-black mb-1">4.7</p>
-              <p className="text-xs text-neutral-500 uppercase tracking-wide">Median</p>
+              <p className="text-3xl font-bold text-black mb-1">+85%</p>
+              <p className="text-xs text-neutral-500 uppercase tracking-wide">YoY Growth</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Second Row */}
+      {/* GitCall Activity Tracker - Moved to Middle */}
+      <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-200 mb-8">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-lg font-semibold text-black">GitCall Activity</h3>
+            <p className="text-sm text-neutral-600">Your daily voice call activity over the past year</p>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-neutral-600">
+            <span>Less</span>
+            <div className="flex gap-1">
+              <div className="w-3 h-3 bg-neutral-100 rounded-sm"></div>
+              <div className="w-3 h-3 bg-red-200 rounded-sm"></div>
+              <div className="w-3 h-3 bg-red-400 rounded-sm"></div>
+              <div className="w-3 h-3 bg-red-600 rounded-sm"></div>
+              <div className="w-3 h-3 bg-red-800 rounded-sm"></div>
+            </div>
+            <span>More</span>
+          </div>
+        </div>
+        
+        <div className="overflow-x-auto">
+          {/* Month labels */}
+          <div className="flex mb-2 min-w-max">
+            <div className="w-8 text-xs text-neutral-500"></div>
+            {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month, index) => (
+              <div key={month} className="flex-1 text-xs text-neutral-500 text-center" style={{minWidth: '44px'}}>
+                {month}
+              </div>
+            ))}
+          </div>
+          
+          {/* Activity grid with day labels */}
+          <div className="flex min-w-max">
+            {/* Day labels */}
+            <div className="flex flex-col gap-1 mr-2">
+              <div className="h-3 text-xs text-neutral-500 flex items-center">Mon</div>
+              <div className="h-3"></div>
+              <div className="h-3 text-xs text-neutral-500 flex items-center">Wed</div>
+              <div className="h-3"></div>
+              <div className="h-3 text-xs text-neutral-500 flex items-center">Fri</div>
+              <div className="h-3"></div>
+              <div className="h-3 text-xs text-neutral-500 flex items-center">Sun</div>
+            </div>
+            
+            {/* Activity squares arranged by weeks */}
+            <div className="grid grid-cols-53 gap-1 min-w-max">
+              {activityData.map((day, index) => {
+                const dayOfWeek = new Date(day.date).getDay();
+                const weekIndex = Math.floor(index / 7);
+                const adjustedIndex = weekIndex * 7 + dayOfWeek;
+                
+                return (
+                  <div
+                    key={index}
+                    className={`w-3 h-3 rounded-sm cursor-pointer transition-all hover:ring-2 hover:ring-blue-300 ${getColorClass(day.level)}`}
+                    onClick={(e) => handleDayClick(day, e)}
+                    onMouseLeave={handleDayLeave}
+                    title={`${day.calls} calls on ${new Date(day.date).toLocaleDateString()}`}
+                    style={{
+                      gridColumn: Math.floor(index / 7) + 1,
+                      gridRow: dayOfWeek + 1
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        
+        <div className="mt-4 text-xs text-neutral-600">
+          <p>Click on any square to see the number of calls received that day</p>
+        </div>
+      </div>
+
+      {/* Bottom Row - Three Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         {/* Feedback Reactions */}
         <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-200">
@@ -326,45 +462,6 @@ function DashboardView() {
               <p className="text-xs text-neutral-600 uppercase tracking-wide">Avg Call Time</p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* GitCall Activity Tracker */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-neutral-200">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h3 className="text-lg font-semibold text-black">GitCall Activity</h3>
-            <p className="text-sm text-neutral-600">Your daily voice call activity over the past year</p>
-          </div>
-          <div className="flex items-center gap-2 text-xs text-neutral-600">
-            <span>Less</span>
-            <div className="flex gap-1">
-              <div className="w-3 h-3 bg-neutral-100 rounded-sm"></div>
-              <div className="w-3 h-3 bg-red-200 rounded-sm"></div>
-              <div className="w-3 h-3 bg-red-400 rounded-sm"></div>
-              <div className="w-3 h-3 bg-red-600 rounded-sm"></div>
-              <div className="w-3 h-3 bg-red-800 rounded-sm"></div>
-            </div>
-            <span>More</span>
-          </div>
-        </div>
-        
-        <div className="overflow-x-auto">
-          <div className="grid grid-cols-53 gap-1 min-w-max">
-            {activityData.map((day, index) => (
-              <div
-                key={index}
-                className={`w-3 h-3 rounded-sm cursor-pointer transition-all hover:ring-2 hover:ring-blue-300 ${getColorClass(day.level)}`}
-                onClick={(e) => handleDayClick(day, e)}
-                onMouseLeave={handleDayLeave}
-                title={`${day.calls} calls on ${new Date(day.date).toLocaleDateString()}`}
-              />
-            ))}
-          </div>
-        </div>
-        
-        <div className="mt-4 text-xs text-neutral-600">
-          <p>Click on any square to see the number of calls received that day</p>
         </div>
       </div>
 
